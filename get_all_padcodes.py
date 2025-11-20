@@ -90,7 +90,7 @@ def get_all_instances():
     result = make_api_request("/vsphone/api/padApi/userPadList", {})
     
     if not result or result.get("code") != 200:
-        print("-")
+        print("⚠️  Gagal mengambil daftar instances")
         if result:
             print(f"   Error: {result.get('msg', 'Unknown error')}")
         return

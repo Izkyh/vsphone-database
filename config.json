@@ -3,15 +3,18 @@
   "description": "VSPhone Multi-Account Configuration - Complete with Delta Executor",
   
   "global_settings": {
-    "check_interval": 30,
+    "check_interval": 300,
+    "grace_period_seconds": 120,
+    "fix_delay_seconds": 3,
     "max_retry_attempts": 3,
-    "retry_delay": 5,
+    "retry_delay": 15,
     "telegram_bot_token": "",
     "telegram_chat_id": "",
     "debug_mode": false,
     "log_file": "vsphone_multi.log",
     "stats_file": "stats_multi.json",
     "check_device_hang": true
+
   },
   
   "accounts": [
@@ -27,7 +30,7 @@
         {
           "pad_code": "ACP250912ADLO4I6",
           "name": "33 - 1",
-          "enabled": true,
+          "enabled": false,
           "location": "Hong Kong",
           
           "clones": [
@@ -35,68 +38,68 @@
               "name": "Roblox Clone 33-1",
               "package": "com.mangcut.rulod",
               "server_url": "https://www.roblox.com/share?code=0c42d67d460dba40bbfb2d15811b4054&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone 33-1",
               "package": "com.mangcut.ruloe",
               "server_url": "https://www.roblox.com/share?code=0c42d67d460dba40bbfb2d15811b4054&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone 33-1",
               "package": "com.mangcut.rulof",
               "server_url": "https://www.roblox.com/share?code=0c42d67d460dba40bbfb2d15811b4054&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone 33-1",
               "package": "com.mangcut.rulog",
               "server_url": "https://www.roblox.com/share?code=0c42d67d460dba40bbfb2d15811b4054&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone 33-1",
               "package": "com.mangcut.ruloh",
               "server_url": "https://www.roblox.com/share?code=0c42d67d460dba40bbfb2d15811b4054&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone 33-1",
               "package": "com.mangcut.ruloi",
               "server_url": "https://www.roblox.com/share?code=0c42d67d460dba40bbfb2d15811b4054&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone 33-1",
               "package": "com.mangcut.ruloj",
               "server_url": "https://www.roblox.com/share?code=0c42d67d460dba40bbfb2d15811b4054&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone 33-1",
               "package": "com.mangcut.rulok",
               "server_url": "https://www.roblox.com/share?code=0c42d67d460dba40bbfb2d15811b4054&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone 33-1",
               "package": "com.mangcut.rulol",
               "server_url": "https://www.roblox.com/share?code=0c42d67d460dba40bbfb2d15811b4054&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone 33-1",
               "package": "com.mangcut.rulom",
               "server_url": "https://www.roblox.com/share?code=0c42d67d460dba40bbfb2d15811b4054&type=Server",
-              "enabled": true              
+              "enabled": false              
             }
           ]
         },
         {
           "pad_code": "ATP251016DUC8PS3",
           "name": "33 - 2",
-          "enabled": true,
+          "enabled": false,
           "location": "Hong Kong",
           
           "clones": [
@@ -104,61 +107,61 @@
               "name": "Roblox Clone 33-2",
               "package": "com.mangcut.rulod",
               "server_url": "https://www.roblox.com/share?code=0c42d67d460dba40bbfb2d15811b4054&type=Server",
-              "enabled": true             
+              "enabled": false             
             },
             {
               "name": "Roblox Clone 33-2",
               "package": "com.mangcut.ruloe",
               "server_url": "https://www.roblox.com/share?code=0c42d67d460dba40bbfb2d15811b4054&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone 33-2",
               "package": "com.mangcut.rulof",
               "server_url": "https://www.roblox.com/share?code=0c42d67d460dba40bbfb2d15811b4054&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone 33-2",
               "package": "com.mangcut.rulog",
               "server_url": "https://www.roblox.com/share?code=0c42d67d460dba40bbfb2d15811b4054&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone 33-2",
               "package": "com.mangcut.ruloh",
               "server_url": "https://www.roblox.com/share?code=0c42d67d460dba40bbfb2d15811b4054&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone 33-2",
               "package": "com.mangcut.ruloi",
               "server_url": "https://www.roblox.com/share?code=0c42d67d460dba40bbfb2d15811b4054&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone 33-2",
               "package": "com.mangcut.ruloj",
               "server_url": "https://www.roblox.com/share?code=0c42d67d460dba40bbfb2d15811b4054&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone 33-2",
               "package": "com.mangcut.rulok",
               "server_url": "https://www.roblox.com/share?code=0c42d67d460dba40bbfb2d15811b4054&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone 33-2",
               "package": "com.mangcut.rulol",
               "server_url": "https://www.roblox.com/share?code=0c42d67d460dba40bbfb2d15811b4054&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone 33-2",
               "package": "com.mangcut.rulom",
               "server_url": "https://www.roblox.com/share?code=0c42d67d460dba40bbfb2d15811b4054&type=Server",
-              "enabled": true             
+              "enabled": false             
             }
           ]
 
@@ -166,7 +169,7 @@
         {
           "pad_code": "ATP250925N85FZ8F",
           "name": "13-2",
-          "enabled": true,
+          "enabled": false,
           "location": "Hong Kong",
           
           "clones": [
@@ -174,25 +177,25 @@
               "name": "Roblox Clone 13-2",
               "package": "com.mangcut.rulod",
               "server_url": "https://www.roblox.com/share?code=e17aac6a3c446643be0e75db1204c146&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone 13-2",
               "package": "com.mangcut.ruloe",
               "server_url": "https://www.roblox.com/share?code=e17aac6a3c446643be0e75db1204c146&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone 13-2",
               "package": "com.mangcut.rulof",
               "server_url": "https://www.roblox.com/share?code=e17aac6a3c446643be0e75db1204c146&type=Server",
-              "enabled": true             
+              "enabled": false             
             },
             {
               "name": "Roblox Clone 13-2",
               "package": "com.mangcut.rulog",
               "server_url": "https://www.roblox.com/share?code=e17aac6a3c446643be0e75db1204c146&type=Server",
-              "enabled": true
+              "enabled": false
               
               
             },
@@ -200,7 +203,7 @@
               "name": "Roblox Clone 13-2",
               "package": "com.mangcut.ruloh",
               "server_url": "https://www.roblox.com/share?code=e17aac6a3c446643be0e75db1204c146&type=Server",
-              "enabled": true
+              "enabled": false
               
               
             },
@@ -208,7 +211,7 @@
               "name": "Roblox Clone 13-2",
               "package": "com.mangcut.ruloi",
               "server_url": "https://www.roblox.com/share?code=e17aac6a3c446643be0e75db1204c146&type=Server",
-              "enabled": true
+              "enabled": false
               
               
             },
@@ -216,7 +219,7 @@
               "name": "Roblox Clone 13-2",
               "package": "com.mangcut.ruloj",
               "server_url": "https://www.roblox.com/share?code=e17aac6a3c446643be0e75db1204c146&type=Server",
-              "enabled": true
+              "enabled": false
               
               
             },
@@ -224,7 +227,7 @@
               "name": "Roblox Clone 13-2",
               "package": "com.mangcut.rulok",
               "server_url": "https://www.roblox.com/share?code=e17aac6a3c446643be0e75db1204c146&type=Server",
-              "enabled": true
+              "enabled": false
               
               
             },
@@ -232,7 +235,7 @@
               "name": "Roblox Clone 13-2",
               "package": "com.mangcut.rulol",
               "server_url": "https://www.roblox.com/share?code=e17aac6a3c446643be0e75db1204c146&type=Server",
-              "enabled": true
+              "enabled": false
               
               
             },
@@ -240,7 +243,7 @@
               "name": "Roblox Clone 13-2",
               "package": "com.mangcut.rulom",
               "server_url": "https://www.roblox.com/share?code=e17aac6a3c446643be0e75db1204c146&type=Server",
-              "enabled": true
+              "enabled": false
               
               
             }
@@ -249,7 +252,7 @@
         {
           "pad_code": "ACP250912ZWJ98OQ",
           "name": "kesatu",
-          "enabled": true,
+          "enabled": false,
           "location": "Hong Kong",
           
           "clones": [
@@ -257,61 +260,61 @@
               "name": "Roblox Clone kesatu",
               "package": "com.mangcut.rulod",
               "server_url": "https://www.roblox.com/share?code=e470077584304541908e4b266e47ab68&type=Server",
-              "enabled": true                        
+              "enabled": false                        
             },
             {
               "name": "Roblox Clone kesatu",
               "package": "com.mangcut.ruloe",
               "server_url": "https://www.roblox.com/share?code=e470077584304541908e4b266e47ab68&type=Server",
-              "enabled": true                        
+              "enabled": false                        
             },
             {
               "name": "Roblox Clone kesatu",
               "package": "com.mangcut.rulof",
               "server_url": "https://www.roblox.com/share?code=e470077584304541908e4b266e47ab68&type=Server",
-              "enabled": true                           
+              "enabled": false                           
             },
             {
               "name": "Roblox Clone kesatu",
               "package": "com.mangcut.rulog",
               "server_url": "https://www.roblox.com/share?code=e470077584304541908e4b266e47ab68&type=Server",
-              "enabled": true                            
+              "enabled": false                            
             },
             {
               "name": "Roblox Clone kesatu",
               "package": "com.mangcut.ruloh",
               "server_url": "https://www.roblox.com/share?code=e470077584304541908e4b266e47ab68&type=Server",
-              "enabled": true                          
+              "enabled": false                          
             },
             {
               "name": "Roblox Clone kesatu",
               "package": "com.mangcut.ruloi",
               "server_url": "https://www.roblox.com/share?code=e470077584304541908e4b266e47ab68&type=Server",
-              "enabled": true                            
+              "enabled": false                            
             },
             {
               "name": "Roblox Clone kesatu",
               "package": "com.mangcut.ruloj",
               "server_url": "https://www.roblox.com/share?code=e470077584304541908e4b266e47ab68&type=Server",
-              "enabled": true                           
+              "enabled": false                           
             },
             {
               "name": "Roblox Clone kesatu",
               "package": "com.mangcut.rulok",
               "server_url": "https://www.roblox.com/share?code=e470077584304541908e4b266e47ab68&type=Server",
-              "enabled": true                            
+              "enabled": false                            
             },
             {
               "name": "Roblox Clone kesatu",
               "package": "com.mangcut.rulol",
               "server_url": "https://www.roblox.com/share?code=e470077584304541908e4b266e47ab68&type=Server",
-              "enabled": true                          
+              "enabled": false                          
             },
             {
               "name": "Roblox Clone kesatu",
               "package": "com.mangcut.rulom",
               "server_url": "https://www.roblox.com/share?code=e470077584304541908e4b266e47ab68&type=Server",
-              "enabled": true                            
+              "enabled": false                            
             }
           ] 
 
@@ -319,7 +322,7 @@
         {
           "pad_code": "ATP2510225FP9KAD",
           "name": "ampunbg",
-          "enabled": true,
+          "enabled": false,
           "location": "Hong Kong",
           
           "clones": [
@@ -327,61 +330,61 @@
               "name": "Roblox Clone ampunbg",
               "package": "com.mangcut.rulod",
               "server_url": "https://www.roblox.com/share?code=7f2ea2bee9dd1f42b351b0cdffd5cf1b&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone ampunbg",
               "package": "com.mangcut.ruloe",
               "server_url": "https://www.roblox.com/share?code=7f2ea2bee9dd1f42b351b0cdffd5cf1b&type=Server",
-              "enabled": true             
+              "enabled": false             
             },
             {
               "name": "Roblox Clone ampunbg",
               "package": "com.mangcut.rulof",
               "server_url": "https://www.roblox.com/share?code=7f2ea2bee9dd1f42b351b0cdffd5cf1b&type=Server",
-              "enabled": true             
+              "enabled": false             
             },
             {
               "name": "Roblox Clone ampunbg",
               "package": "com.mangcut.rulog",
               "server_url": "https://www.roblox.com/share?code=7f2ea2bee9dd1f42b351b0cdffd5cf1b&type=Server",
-              "enabled": true              
+              "enabled": false              
             }, 
             {
               "name": "Roblox Clone ampunbg",
               "package": "com.mangcut.ruloh",
               "server_url": "https://www.roblox.com/share?code=7f2ea2bee9dd1f42b351b0cdffd5cf1b&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone ampunbg",
               "package": "com.mangcut.ruloi",
               "server_url": "https://www.roblox.com/share?code=7f2ea2bee9dd1f42b351b0cdffd5cf1b&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone ampunbg",
               "package": "com.mangcut.ruloj",
               "server_url": "https://www.roblox.com/share?code=7f2ea2bee9dd1f42b351b0cdffd5cf1b&type=Server",
-              "enabled": true             
+              "enabled": false             
             },
             {
               "name": "Roblox Clone ampunbg",
               "package": "com.mangcut.rulok",
               "server_url": "https://www.roblox.com/share?code=7f2ea2bee9dd1f42b351b0cdffd5cf1b&type=Server",
-              "enabled": true             
+              "enabled": false             
             },
             {
               "name": "Roblox Clone ampunbg",
               "package": "com.mangcut.rulol",
               "server_url": "https://www.roblox.com/share?code=7f2ea2bee9dd1f42b351b0cdffd5cf1b&type=Server",
-              "enabled": true             
+              "enabled": false             
             },
             {
               "name": "Roblox Clone ampunbg",
               "package": "com.mangcut.rulom",
               "server_url": "https://www.roblox.com/share?code=7f2ea2bee9dd1f42b351b0cdffd5cf1b&type=Server",
-              "enabled": true                            
+              "enabled": false                            
             }
           ]
 
@@ -389,7 +392,7 @@
         {
           "pad_code": "ATP2508228DDYXFM",
           "name": "zetsto",
-          "enabled": true,
+          "enabled": false,
           "location": "Hong Kong",
           
           "clones": [
@@ -397,61 +400,61 @@
               "name": "Roblox Clone zetsto",
               "package": "com.mangcut.rulod",
               "server_url": "https://www.roblox.com/share?code=2374c7814a630e43be3eef5859c4538c&type=Server",
-              "enabled": true             
+              "enabled": false             
             },
             {
               "name": "Roblox Clone zetsto",
               "package": "com.mangcut.ruloe",
               "server_url": "https://www.roblox.com/share?code=2374c7814a630e43be3eef5859c4538c&type=Server",
-              "enabled": true             
+              "enabled": false             
             },
             {
               "name": "Roblox Clone zetsto",
               "package": "com.mangcut.rulof",
               "server_url": "https://www.roblox.com/share?code=2374c7814a630e43be3eef5859c4538c&type=Server",
-              "enabled": true             
+              "enabled": false             
             },
             {
               "name": "Roblox Clone zetsto",
               "package": "com.mangcut.rulog",
               "server_url": "https://www.roblox.com/share?code=2374c7814a630e43be3eef5859c4538c&type=Server",
-              "enabled": true             
+              "enabled": false             
             },
             {
               "name": "Roblox Clone zetsto",
               "package": "com.mangcut.ruloh",
               "server_url": "https://www.roblox.com/share?code=2374c7814a630e43be3eef5859c4538c&type=Server",
-              "enabled": true             
+              "enabled": false             
             },
             {
               "name": "Roblox Clone zetsto",
               "package": "com.mangcut.ruloi",
               "server_url": "https://www.roblox.com/share?code=2374c7814a630e43be3eef5859c4538c&type=Server",
-              "enabled": true             
+              "enabled": false             
             },
             {
               "name": "Roblox Clone zetsto",
               "package": "com.mangcut.ruloj",
               "server_url": "https://www.roblox.com/share?code=2374c7814a630e43be3eef5859c4538c&type=Server",
-              "enabled": true             
+              "enabled": false             
             },
             {
               "name": "Roblox Clone zetsto",
               "package": "com.mangcut.rulok",
               "server_url": "https://www.roblox.com/share?code=2374c7814a630e43be3eef5859c4538c&type=Server",
-              "enabled": true             
+              "enabled": false             
             },
             {
               "name": "Roblox Clone zetsto",
               "package": "com.mangcut.rulol",
               "server_url": "https://www.roblox.com/share?code=2374c7814a630e43be3eef5859c4538c&type=Server",
-              "enabled": true             
+              "enabled": false             
             },
             {
               "name": "Roblox Clone zetsto",
               "package": "com.mangcut.rulom",
               "server_url": "https://www.roblox.com/share?code=2374c7814a630e43be3eef5859c4538c&type=Server",
-              "enabled": true                            
+              "enabled": false                            
             }
           ]
 
@@ -529,7 +532,7 @@
         {
           "pad_code": "ATP250822B80OTIZ",
           "name": "73-1",
-          "enabled": true,
+          "enabled": false,
           "location": "Hong Kong",
           
           "clones": [
@@ -537,61 +540,61 @@
               "name": "Roblox Clone 73-1",
               "package": "com.mangcut.rulod",
               "server_url": "https://www.roblox.com/share?code=95adc5003293a345b9b7e1f88714eafd&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone 73-1",
               "package": "com.mangcut.ruloe",
               "server_url": "https://www.roblox.com/share?code=95adc5003293a345b9b7e1f88714eafd&type=Server",
-              "enabled": true             
+              "enabled": false             
             },
             {
               "name": "Roblox Clone 73-1",
               "package": "com.mangcut.rulof",
               "server_url": "https://www.roblox.com/share?code=95adc5003293a345b9b7e1f88714eafd&type=Server",
-              "enabled": true             
+              "enabled": false             
             },
             {
               "name": "Roblox Clone 73-1",
               "package": "com.mangcut.rulog",
               "server_url": "https://www.roblox.com/share?code=95adc5003293a345b9b7e1f88714eafd&type=Server",
-              "enabled": true              
+              "enabled": false              
             }, 
             {
               "name": "Roblox Clone 73-1",
               "package": "com.mangcut.ruloh",
               "server_url": "https://www.roblox.com/share?code=95adc5003293a345b9b7e1f88714eafd&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone 73-1",
               "package": "com.mangcut.ruloi",
               "server_url": "https://www.roblox.com/share?code=95adc5003293a345b9b7e1f88714eafd&type=Server",
-              "enabled": true              
+              "enabled": false              
             },
             {
               "name": "Roblox Clone 73-1",
               "package": "com.mangcut.ruloj",
               "server_url": "https://www.roblox.com/share?code=95adc5003293a345b9b7e1f88714eafd&type=Server",
-              "enabled": true             
+              "enabled": false             
             },
             {
               "name": "Roblox Clone 73-1",
               "package": "com.mangcut.rulok",
               "server_url": "https://www.roblox.com/share?code=95adc5003293a345b9b7e1f88714eafd&type=Server",
-              "enabled": true             
+              "enabled": false             
             },
             {
               "name": "Roblox Clone 73-1",
               "package": "com.mangcut.rulol",
               "server_url": "https://www.roblox.com/share?code=95adc5003293a345b9b7e1f88714eafd&type=Server",
-              "enabled": true             
+              "enabled": false             
             },
             {
               "name": "Roblox Clone 73-1",
               "package": "com.mangcut.rulom",
               "server_url": "https://www.roblox.com/share?code=95adc5003293a345b9b7e1f88714eafd&type=Server",
-              "enabled": true                            
+              "enabled": false                            
             }
           ]
 
