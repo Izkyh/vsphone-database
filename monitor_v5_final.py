@@ -63,9 +63,9 @@ class StateManager:
                 for key in expired:
                     del self.states[key]
                 
-                log_message(f"📂 Loaded state: {len(self.states)} clones tracked", "INFO")
+                print(f"[INFO] 📂 Loaded state: {len(self.states)} clones tracked")
             except Exception as e:
-                log_message(f"⚠️  Failed to load state: {e}", "WARNING")
+                print(f"[WARNING] ⚠️  Failed to load state: {e}")
                 self.states = {}
     
     def save_state(self):
@@ -74,7 +74,8 @@ class StateManager:
             with open(self.state_file, 'wb') as f:
                 pickle.dump(self.states, f)
         except Exception as e:
-            log_message(f"⚠️  Failed to save state: {e}", "WARNING")
+            # Silent fail - tidak perlu log di sini
+            pass
     
     def mark_restart(self, clone_data, grace_seconds=120):
         """
