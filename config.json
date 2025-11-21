@@ -5,8 +5,8 @@
   "global_settings": {
     "check_interval": 300,
     "grace_period_seconds": 120,
-    "fix_delay_seconds": 3,
-    "max_retry_attempts": 3,
+    "fix_delay_seconds": 2,
+    "max_retry_attempts": 2,
     "retry_delay": 15,
     "telegram_bot_token": "",
     "telegram_chat_id": "",
