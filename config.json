@@ -13,7 +13,7 @@
     "debug_mode": false,
     "log_file": "vsphone_multi.log",
     "stats_file": "stats_multi.json",
-    "check_device_hang": true
+    "check_device_hang": false
 
   },
   
