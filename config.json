@@ -3,11 +3,10 @@
   "description": "VSPhone Multi-Account Configuration - Complete with Delta Executor",
   
   "global_settings": {
-    "check_interval": 300,
-    "grace_period_seconds": 120,
-    "fix_delay_seconds": 2,
+    "check_interval": 80,
+    "grace_period_seconds": 10,
     "max_retry_attempts": 2,
-    "retry_delay": 15,
+    "retry_delay": 10,
     "telegram_bot_token": "",
     "telegram_chat_id": "",
     "debug_mode": false,
@@ -17,7 +16,7 @@
 
   },
   
-  "accounts": [
+    "accounts": [
     {
       "account_id": "account",
       "account_name": "Main Account - Fish It Farm",
@@ -322,7 +321,7 @@
         {
           "pad_code": "ACP251015NTKJQHR",
           "name": "ampunbg",
-          "enabled": false,
+          "enabled": true,
           "location": "Hong Kong",
           
           "clones": [
@@ -330,61 +329,61 @@
               "name": "Roblox Clone ampunbg",
               "package": "com.mangcut.rulod",
               "server_url": "https://www.roblox.com/share?code=7f2ea2bee9dd1f42b351b0cdffd5cf1b&type=Server",
-              "enabled": false              
+              "enabled": true              
             },
             {
               "name": "Roblox Clone ampunbg",
               "package": "com.mangcut.ruloe",
               "server_url": "https://www.roblox.com/share?code=7f2ea2bee9dd1f42b351b0cdffd5cf1b&type=Server",
-              "enabled": false             
+              "enabled": true             
             },
             {
               "name": "Roblox Clone ampunbg",
               "package": "com.mangcut.rulof",
               "server_url": "https://www.roblox.com/share?code=7f2ea2bee9dd1f42b351b0cdffd5cf1b&type=Server",
-              "enabled": false             
+              "enabled": true             
             },
             {
               "name": "Roblox Clone ampunbg",
               "package": "com.mangcut.rulog",
               "server_url": "https://www.roblox.com/share?code=7f2ea2bee9dd1f42b351b0cdffd5cf1b&type=Server",
-              "enabled": false              
+              "enabled": true              
             }, 
             {
               "name": "Roblox Clone ampunbg",
               "package": "com.mangcut.ruloh",
               "server_url": "https://www.roblox.com/share?code=7f2ea2bee9dd1f42b351b0cdffd5cf1b&type=Server",
-              "enabled": false              
+              "enabled": true              
             },
             {
               "name": "Roblox Clone ampunbg",
               "package": "com.mangcut.ruloi",
               "server_url": "https://www.roblox.com/share?code=7f2ea2bee9dd1f42b351b0cdffd5cf1b&type=Server",
-              "enabled": false              
+              "enabled": true              
             },
             {
               "name": "Roblox Clone ampunbg",
               "package": "com.mangcut.ruloj",
               "server_url": "https://www.roblox.com/share?code=7f2ea2bee9dd1f42b351b0cdffd5cf1b&type=Server",
-              "enabled": false             
+              "enabled": true             
             },
             {
               "name": "Roblox Clone ampunbg",
               "package": "com.mangcut.rulok",
               "server_url": "https://www.roblox.com/share?code=7f2ea2bee9dd1f42b351b0cdffd5cf1b&type=Server",
-              "enabled": false             
+              "enabled": true             
             },
             {
               "name": "Roblox Clone ampunbg",
               "package": "com.mangcut.rulol",
               "server_url": "https://www.roblox.com/share?code=7f2ea2bee9dd1f42b351b0cdffd5cf1b&type=Server",
-              "enabled": false             
+              "enabled": true             
             },
             {
               "name": "Roblox Clone ampunbg",
               "package": "com.mangcut.rulom",
               "server_url": "https://www.roblox.com/share?code=7f2ea2bee9dd1f42b351b0cdffd5cf1b&type=Server",
-              "enabled": false                            
+              "enabled": true                            
             }
           ]
 
@@ -690,7 +689,7 @@
     "   - server_url: Roblox server share URL",
     "",
     "4. DELTA EXECUTOR:",
-    "   - enabled: true/false - Enable Delta auto-execute",
+    "   - enabled: true/true - Enable Delta auto-execute",
     "   - wait_time: Seconds to wait for game load (default: 10)",
     "   - tap_delta_icon: true to auto-tap Delta icon",
     "   - delta_icon_x: Pixels from RIGHT edge (default: 50)",
