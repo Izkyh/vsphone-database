@@ -391,7 +391,7 @@
         {
           "pad_code": "ATP2508228DDYXFM",
           "name": "zetsto",
-          "enabled": false,
+          "enabled": true,
           "location": "Hong Kong",
           
           "clones": [
@@ -399,61 +399,61 @@
               "name": "Roblox Clone zetsto",
               "package": "com.mangcut.rulod",
               "server_url": "https://www.roblox.com/share?code=2374c7814a630e43be3eef5859c4538c&type=Server",
-              "enabled": false             
+              "enabled": true             
             },
             {
               "name": "Roblox Clone zetsto",
               "package": "com.mangcut.ruloe",
               "server_url": "https://www.roblox.com/share?code=2374c7814a630e43be3eef5859c4538c&type=Server",
-              "enabled": false             
+              "enabled": true             
             },
             {
               "name": "Roblox Clone zetsto",
               "package": "com.mangcut.rulof",
               "server_url": "https://www.roblox.com/share?code=2374c7814a630e43be3eef5859c4538c&type=Server",
-              "enabled": false             
+              "enabled": true             
             },
             {
               "name": "Roblox Clone zetsto",
               "package": "com.mangcut.rulog",
               "server_url": "https://www.roblox.com/share?code=2374c7814a630e43be3eef5859c4538c&type=Server",
-              "enabled": false             
+              "enabled": true             
             },
             {
               "name": "Roblox Clone zetsto",
               "package": "com.mangcut.ruloh",
               "server_url": "https://www.roblox.com/share?code=2374c7814a630e43be3eef5859c4538c&type=Server",
-              "enabled": false             
+              "enabled": true             
             },
             {
               "name": "Roblox Clone zetsto",
               "package": "com.mangcut.ruloi",
               "server_url": "https://www.roblox.com/share?code=2374c7814a630e43be3eef5859c4538c&type=Server",
-              "enabled": false             
+              "enabled": true             
             },
             {
               "name": "Roblox Clone zetsto",
               "package": "com.mangcut.ruloj",
               "server_url": "https://www.roblox.com/share?code=2374c7814a630e43be3eef5859c4538c&type=Server",
-              "enabled": false             
+              "enabled": true             
             },
             {
               "name": "Roblox Clone zetsto",
               "package": "com.mangcut.rulok",
               "server_url": "https://www.roblox.com/share?code=2374c7814a630e43be3eef5859c4538c&type=Server",
-              "enabled": false             
+              "enabled": true             
             },
             {
               "name": "Roblox Clone zetsto",
               "package": "com.mangcut.rulol",
               "server_url": "https://www.roblox.com/share?code=2374c7814a630e43be3eef5859c4538c&type=Server",
-              "enabled": false             
+              "enabled": true             
             },
             {
               "name": "Roblox Clone zetsto",
               "package": "com.mangcut.rulom",
               "server_url": "https://www.roblox.com/share?code=2374c7814a630e43be3eef5859c4538c&type=Server",
-              "enabled": false                            
+              "enabled": true                            
             }
           ]
 
