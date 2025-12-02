@@ -814,61 +814,130 @@
           
           "clones": [
             {
-              "name": "Roblox Clone 82-1",
+              "name": "Roblox Clone 100-1",
               "package": "com.mangcut.rulod",
               "server_url": "https://www.roblox.com/share?code=b390535ae53d8441a47158f0a47ba919&type=Server",
               "enabled": true              
             },
             {
-              "name": "Roblox Clone 82-1",
+              "name": "Roblox Clone 100-1",
               "package": "com.mangcut.ruloe",
               "server_url": "https://www.roblox.com/share?code=b390535ae53d8441a47158f0a47ba919&type=Server",
               "enabled": true
             },
             {
-              "name": "Roblox Clone 82-1",
+              "name": "Roblox Clone 100-1",
               "package": "com.mangcut.rulof",
               "server_url": "https://www.roblox.com/share?code=b390535ae53d8441a47158f0a47ba919&type=Server",
               "enabled": true
 
             },
             {
-              "name": "Roblox Clone 82-1",
+              "name": "Roblox Clone 100-1",
               "package": "com.mangcut.rulog",
               "server_url": "https://www.roblox.com/share?code=b390535ae53d8441a47158f0a47ba919&type=Server",
               "enabled": true
             }, 
             {
-              "name": "Roblox Clone 82-1",
+              "name": "Roblox Clone 100-1",
               "package": "com.mangcut.ruloh",
               "server_url": "https://www.roblox.com/share?code=b390535ae53d8441a47158f0a47ba919&type=Server",
               "enabled": true
             },
             {
-              "name": "Roblox Clone 82-1",
+              "name": "Roblox Clone 100-1",
               "package": "com.mangcut.ruloi",
               "server_url": "https://www.roblox.com/share?code=b390535ae53d8441a47158f0a47ba919&type=Server",
               "enabled": true
             },
             {
-              "name": "Roblox Clone 82-1",
+              "name": "Roblox Clone 100-1",
               "package": "com.mangcut.ruloj",
               "server_url": "https://www.roblox.com/share?code=b390535ae53d8441a47158f0a47ba919&type=Server",
               "enabled": true
             },
             {
-              "name": "Roblox Clone 82-1",
+              "name": "Roblox Clone 100-1",
               "package": "com.mangcut.rulok",
               "server_url": "https://www.roblox.com/share?code=b390535ae53d8441a47158f0a47ba919&type=Server",
               "enabled": true
             },{
-              "name": "Roblox Clone 82-1",
+              "name": "Roblox Clone 100-1",
               "package": "com.mangcut.rulol",
               "server_url": "https://www.roblox.com/share?code=b390535ae53d8441a47158f0a47ba919&type=Server",
               "enabled": true
             },
             {
-              "name": "Roblox Clone 82-1",
+              "name": "Roblox Clone 100-1",
+              "package": "com.mangcut.rulom",
+              "server_url": "https://www.roblox.com/share?code=b390535ae53d8441a47158f0a47ba919&type=Server",
+              "enabled": true
+            }
+          ]
+        },
+        {
+          "pad_code": "APP250907J9A1APL",
+          "name": "100-2",
+          "enabled": true,
+          "location": "Hong Kong",
+          
+          "clones": [
+            {
+              "name": "Roblox Clone 100-2",
+              "package": "com.mangcut.rulod",
+              "server_url": "https://www.roblox.com/share?code=b390535ae53d8441a47158f0a47ba919&type=Server",
+              "enabled": true              
+            },
+            {
+              "name": "Roblox Clone 100-2",
+              "package": "com.mangcut.ruloe",
+              "server_url": "https://www.roblox.com/share?code=b390535ae53d8441a47158f0a47ba919&type=Server",
+              "enabled": true
+            },
+            {
+              "name": "Roblox Clone 100-2",
+              "package": "com.mangcut.rulof",
+              "server_url": "https://www.roblox.com/share?code=b390535ae53d8441a47158f0a47ba919&type=Server",
+              "enabled": true
+
+            },
+            {
+              "name": "Roblox Clone 100-2",
+              "package": "com.mangcut.rulog",
+              "server_url": "https://www.roblox.com/share?code=b390535ae53d8441a47158f0a47ba919&type=Server",
+              "enabled": true
+            }, 
+            {
+              "name": "Roblox Clone 100-2",
+              "package": "com.mangcut.ruloh",
+              "server_url": "https://www.roblox.com/share?code=b390535ae53d8441a47158f0a47ba919&type=Server",
+              "enabled": true
+            },
+            {
+              "name": "Roblox Clone 100-2",
+              "package": "com.mangcut.ruloi",
+              "server_url": "https://www.roblox.com/share?code=b390535ae53d8441a47158f0a47ba919&type=Server",
+              "enabled": true
+            },
+            {
+              "name": "Roblox Clone 100-2",
+              "package": "com.mangcut.ruloj",
+              "server_url": "https://www.roblox.com/share?code=b390535ae53d8441a47158f0a47ba919&type=Server",
+              "enabled": true
+            },
+            {
+              "name": "Roblox Clone 100-2",
+              "package": "com.mangcut.rulok",
+              "server_url": "https://www.roblox.com/share?code=b390535ae53d8441a47158f0a47ba919&type=Server",
+              "enabled": true
+            },{
+              "name": "Roblox Clone 100-2",
+              "package": "com.mangcut.rulol",
+              "server_url": "https://www.roblox.com/share?code=b390535ae53d8441a47158f0a47ba919&type=Server",
+              "enabled": true
+            },
+            {
+              "name": "Roblox Clone 100-2",
               "package": "com.mangcut.rulom",
               "server_url": "https://www.roblox.com/share?code=b390535ae53d8441a47158f0a47ba919&type=Server",
               "enabled": true
@@ -878,107 +947,5 @@
       ]
       
     }
-  ],
-  
-  "notes": [
-    "=== CONFIGURATION GUIDE ===",
-    "",
-    "1. CREDENTIALS:",
-    "   - access_key_id: Get from VSPhone Dashboard → Settings → API",
-    "   - secret_access_key: Get from VSPhone Dashboard → Settings → API",
-    "",
-    "2. INSTANCE:",
-    "   - pad_code: VSPhone instance pad code (e.g., APP2509077XXXXX)",
-    "   - name: Any name you want (for logs)",
-    "",
-    "3. CLONES:",
-    "   - package: App package name (MUST BE EXACT!)",
-    "     Check with: ps -A | grep roblox",
-    "   - server_url: Roblox server share URL",
-    "",
-    "4. DELTA EXECUTOR:",
-    "   - enabled: true/true - Enable Delta auto-execute",
-    "   - wait_time: Seconds to wait for game load (default: 10)",
-    "   - tap_delta_icon: true to auto-tap Delta icon",
-    "   - delta_icon_x: Pixels from RIGHT edge (default: 50)",
-    "   - delta_icon_y: Pixels from TOP edge (default: 200)",
-    "   - close_after_execute: true to close Delta UI after execute",
-    "",
-    "5. TELEGRAM (Optional):",
-    "   - telegram_bot_token: Get from @BotFather",
-    "   - telegram_chat_id: Get from @userinfobot",
-    "",
-    "6. TO ADD MORE CLONES:",
-    "   Copy-paste clone object and change:",
-    "   - name",
-    "   - package",
-    "   Keep server_url same if joining same server",
-    "",
-    "7. TO ADD MORE INSTANCES:",
-    "   Copy-paste instance object and change:",
-    "   - pad_code",
-    "   - name",
-    "",
-    "8. TO ADD MORE ACCOUNTS:",
-    "   Copy-paste account object and change:",
-    "   - account_id",
-    "   - access_key_id",
-    "   - secret_access_key",
-    "",
-    "=== DELTA ICON POSITION ===",
-    "",
-    "Default position works for most devices:",
-    "- delta_icon_x: 50 (50 pixels from right)",
-    "- delta_icon_y: 200 (200 pixels from top)",
-    "",
-    "If Delta icon in different position:",
-    "1. Open Roblox + Delta",
-    "2. Note Delta icon position",
-    "3. Update coordinates in config",
-    "",
-    "Common positions:",
-    "- Top Right: x=50, y=200 (default)",
-    "- Top Left: x=width-50, y=200",
-    "- Bottom Right: x=50, y=height-200",
-    "",
-    "=== TROUBLESHOOTING ===",
-    "",
-    "1. 'Process not found' but app running:",
-    "   → Check package name with: ps -A | grep roblox",
-    "   → Update 'package' in config",
-    "",
-    "2. Delta not executing:",
-    "   → Check delta_icon_x and delta_icon_y",
-    "   → Enable debug_mode: true",
-    "   → Check logs for tap coordinates",
-    "",
-    "3. Error 279 not detected:",
-    "   → Enhanced detection already enabled!",
-    "   → Check logs for detection attempts",
-    "",
-    "4. Device hanging:",
-    "   → Auto-detection enabled!",
-    "   → Force recovery will run automatically",
-    "",
-    "=== FEATURES ===",
-    "",
-    "✅ Multi-account support",
-    "✅ Parallel processing (10 clones at once)",
-    "✅ Enhanced Error 279 detection (4 methods)",
-    "✅ Device hang detection + recovery",
-    "✅ Delta auto-executor",
-    "✅ SQLite database (optional)",
-    "✅ Web dashboard (optional)",
-    "✅ Telegram notifications",
-    "✅ Detailed logging",
-    "",
-    "=== QUICK START ===",
-    "",
-    "1. Edit this file with your data",
-    "2. Run: python monitor.py --database --web-ui",
-    "3. Open: http://localhost:5000",
-    "4. Monitor logs and dashboard!",
-    "",
-    "Happy farming! 🎮"
   ]
 }
