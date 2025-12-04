@@ -563,6 +563,195 @@ def make_api_request(access_key, secret_key, endpoint, body=None, retry=0):
         return None
 
 # ═══════════════════════════════════════════════════════════════
+#                    Device Reboot Functions
+# ═══════════════════════════════════════════════════════════════
+
+def reboot_device(instance_data, method="adb"):
+    """
+    Reboot VSPhone device instance
+    
+    Methods:
+    - 'adb': Using ADB command (soft reboot, safer)
+    - 'api': Using VSPhone restart API (hard restart with IP change)
+    
+    Returns: (success, duration, error_message)
+    """
+    try:
+        access_key = instance_data['access_key_id']
+        secret_key = instance_data['secret_access_key']
+        pad_code = instance_data['instance_pad_code']
+        instance_name = instance_data['instance_name']
+        
+        log_message(f"🔄 Rebooting {instance_name} using {method} method...", "INFO")
+        
+        start_time = time.time()
+        
+        if method == "adb":
+            # Method 1: Soft reboot using ADB command
+            body = {
+                "padCode": pad_code,
+                "scriptContent": "reboot"
+            }
+            
+            result = make_api_request(access_key, secret_key, "/vsphone/api/padApi/syncCmd", body)
+            
+            if result and result.get("code") == 200:
+                duration = time.time() - start_time
+                log_message(f"✅ {instance_name}: Device rebooted successfully ({duration:.1f}s)", "SUCCESS")
+                return (True, duration, None)
+            else:
+                error = result.get("message", "Unknown error") if result else "API call failed"
+                duration = time.time() - start_time
+                log_message(f"❌ {instance_name}: Reboot failed - {error}", "ERROR")
+                return (False, duration, error)
+        
+        elif method == "api":
+            # Method 2: Restart instance using VSPhone API (changes IP)
+            body = {
+                "padCodes": [pad_code]
+            }
+            
+            result = make_api_request(access_key, secret_key, "/vsphone/api/padApi/restart", body)
+            
+            if result and result.get("code") == 200:
+                duration = time.time() - start_time
+                log_message(f"✅ {instance_name}: Instance restarted (IP changed) ({duration:.1f}s)", "SUCCESS")
+                return (True, duration, None)
+            else:
+                error = result.get("message", "Unknown error") if result else "API call failed"
+                duration = time.time() - start_time
+                log_message(f"❌ {instance_name}: Restart failed - {error}", "ERROR")
+                return (False, duration, error)
+        
+        else:
+            return (False, 0, f"Invalid reboot method: {method}")
+    
+    except Exception as e:
+        log_message(f"❌ {instance_name}: Reboot exception - {e}", "ERROR")
+        return (False, 0, str(e))
+
+def reboot_all_devices(config):
+    """Reboot all enabled instances in parallel"""
+    instances = config.get_all_enabled_instances()
+    
+    if len(instances) == 0:
+        log_message("⚠️  No instances to reboot", "WARNING")
+        return
+    
+    method = config.global_settings.get('reboot_method', 'adb')
+    log_message(f"🔄 Starting device reboot for {len(instances)} instances (method: {method})...", "INFO")
+    
+    success_count = 0
+    failed_count = 0
+    total_duration = 0
+    
+    # Parallel reboot
+    with ThreadPoolExecutor(max_workers=5) as executor:
+        futures = {
+            executor.submit(reboot_device, instance, method): instance 
+            for instance in instances
+        }
+        
+        for future in as_completed(futures):
+            success, duration, error = future.result()
+            total_duration += duration
+            
+            if success:
+                success_count += 1
+            else:
+                failed_count += 1
+    
+    avg_duration = total_duration / len(instances) if instances else 0
+    
+    log_message(
+        f"🔄 Reboot complete: ✅ {success_count} success, ❌ {failed_count} failed (avg: {avg_duration:.1f}s)",
+        "SUCCESS" if failed_count == 0 else "WARNING"
+    )
+    
+    # Send notification
+    send_telegram(
+        f"🔄 <b>Device Reboot Report</b>\n"
+        f"✅ Success: {success_count}\n"
+        f"❌ Failed: {failed_count}\n"
+        f"📱 Total: {len(instances)} instances\n"
+        f"⏱️ Avg duration: {avg_duration:.1f}s",
+        config
+    )
+    
+    return (success_count, failed_count)
+
+# ═══════════════════════════════════════════════════════════════
+#                    Auto Reboot Thread
+# ═══════════════════════════════════════════════════════════════
+
+class AutoRebootThread(threading.Thread):
+    """Background thread for periodic device reboots"""
+    
+    def __init__(self, config):
+        super().__init__(daemon=True)
+        self.config = config
+        self.interval_hours = config.global_settings.get('auto_reboot_interval_hours', 8)
+        self.interval_seconds = self.interval_hours * 3600
+        self.running = True
+        self.last_reboot_time = time.time()
+        self.next_reboot_time = self.last_reboot_time + self.interval_seconds
+    
+    def get_time_until_next_reboot(self):
+        """Get time remaining until next reboot"""
+        remaining = self.next_reboot_time - time.time()
+        return max(0, remaining)
+    
+    def get_next_reboot_datetime(self):
+        """Get datetime of next scheduled reboot"""
+        return datetime.fromtimestamp(self.next_reboot_time)
+    
+    def run(self):
+        """Run periodic device reboots"""
+        log_message(f"✅ Auto reboot thread started (every {self.interval_hours}h)", "SUCCESS")
+        
+        while self.running:
+            try:
+                # Calculate time to next reboot
+                remaining = self.get_time_until_next_reboot()
+                
+                if remaining <= 0:
+                    # Time to reboot!
+                    log_message(f"⏰ Auto reboot scheduled task triggered", "INFO")
+                    
+                    # Stop monitoring temporarily
+                    log_message("⏸️  Pausing monitoring during reboot...", "INFO")
+                    
+                    # Execute reboot
+                    reboot_all_devices(self.config)
+                    
+                    # Wait for devices to come back online (60 seconds)
+                    log_message("⏳ Waiting 60s for devices to restart...", "INFO")
+                    time.sleep(60)
+                    
+                    # Update next reboot time
+                    self.last_reboot_time = time.time()
+                    self.next_reboot_time = self.last_reboot_time + self.interval_seconds
+                    
+                    log_message(f"▶️  Resuming monitoring...", "INFO")
+                    log_message(f"📅 Next reboot: {self.get_next_reboot_datetime().strftime('%Y-%m-%d %H:%M:%S')}", "INFO")
+                else:
+                    # Sleep in small chunks to allow graceful shutdown
+                    sleep_time = min(60, remaining)  # Check every minute
+                    time.sleep(sleep_time)
+            
+            except Exception as e:
+                log_message(f"Auto reboot thread error: {e}", "ERROR")
+                time.sleep(60)  # Wait before retry
+    
+    def force_reboot_now(self):
+        """Force immediate reboot (for testing)"""
+        log_message("🔧 Force reboot triggered!", "WARNING")
+        self.next_reboot_time = time.time()
+
+# Global auto reboot thread instance
+auto_reboot_thread = None
+
+# ═══════════════════════════════════════════════════════════════
 #                    Cache Cleaner Functions
 # ═══════════════════════════════════════════════════════════════
 
@@ -974,6 +1163,7 @@ class CacheCleanerThread(threading.Thread):
 
 def monitor_loop(config):
     """Main monitoring loop with parallel processing"""
+    global auto_reboot_thread
     
     clones = config.get_all_enabled_clones()
     
@@ -994,6 +1184,12 @@ def monitor_loop(config):
     log_message(f"⏱️  Check Interval: {config.global_settings.get('check_interval', 30)}s")
     log_message(f"⚡ Parallel Workers: 10")
     log_message(f"🧹 Cache Cleaning: Every 2 hours")
+    
+    # Auto reboot info
+    if config.global_settings.get('auto_reboot_enabled', False):
+        reboot_hours = config.global_settings.get('auto_reboot_interval_hours', 8)
+        log_message(f"🔄 Auto Reboot: Every {reboot_hours} hours")
+    
     log_message(f"💾 Database: {'✅ Enabled' if db.enabled else '❌ Disabled'}")
     log_message("=" * 60)
     
@@ -1007,6 +1203,15 @@ def monitor_loop(config):
     cache_cleaner.start()
     log_message("✅ Cache cleaner thread started (every 2 hours)", "SUCCESS")
     
+    # Start auto reboot thread if enabled
+    if config.global_settings.get('auto_reboot_enabled', False):
+        auto_reboot_thread = AutoRebootThread(config)
+        auto_reboot_thread.start()
+        
+        next_reboot = auto_reboot_thread.get_next_reboot_datetime()
+        log_message(f"✅ Auto reboot thread started", "SUCCESS")
+        log_message(f"📅 Next reboot: {next_reboot.strftime('%Y-%m-%d %H:%M:%S')}", "INFO")
+    
     # Send startup notification
     send_telegram(
         f"🚀 <b>Monitor v{VERSION} Started</b>\n"
@@ -1014,7 +1219,8 @@ def monitor_loop(config):
         f"👤 {accounts_count} accounts\n"
         f"📱 {instances_count} instances\n"
         f"⚡ Parallel processing enabled\n"
-        f"🧹 Auto cache cleaning enabled (2h)",
+        f"🧹 Auto cache cleaning enabled (2h)\n"
+        f"{'🔄 Auto reboot enabled (' + str(config.global_settings.get('auto_reboot_interval_hours', 8)) + 'h)' if config.global_settings.get('auto_reboot_enabled', False) else ''}",
         config
     )
     
@@ -1043,7 +1249,7 @@ def monitor_loop(config):
             with ThreadPoolExecutor(max_workers=max_workers) as executor:
                 # Submit all tasks
                 future_to_clone = {
-                    executor.submit(check_and_fix_clone, clone): clone 
+                    executor.submit(check_and_fix_clone, clone): clone
                     for clone in clones
                 }
                 
@@ -1063,41 +1269,27 @@ def monitor_loop(config):
             cycle_duration = time.time() - cycle_start
             
             # Summary
-            log_message("\n" + "─" * 60)
-            log_message(f"✅ Cycle Complete ({cycle_duration:.1f}s)")
-            log_message(f"   Healthy: {len(results['healthy'])}")
+            log_message("=" * 60)
+            log_message(f"📋 Cycle Complete ({cycle_duration:.1f}s)")
+            log_message(f"✅ Healthy: {len(results['healthy'])}")
             
             if results['fixed']:
-                log_message(f"   Fixed: {len(results['fixed'])}")
+                log_message(f"🔧 Fixed: {len(results['fixed'])}")
                 if issue_counts:
-                    issues_str = ", ".join([f"{v} {k}" for k, v in issue_counts.items() if not k.endswith('_failed')])
+                    issues_str = ', '.join([f"{v} {k}" for k, v in issue_counts.items() if not k.endswith('_failed')])
                     log_message(f"   Issues: {issues_str}")
             
             if results['failed']:
-                log_message(f"   ⚠️  Failed to fix: {len(results['failed'])}", "WARNING")
+                log_message(f"❌ Failed to fix: {len(results['failed'])}", "WARNING")
             
             if results['error']:
-                log_message(f"   ❌ Errors: {len(results['error'])}", "ERROR")
+                log_message(f"⚠️  Errors: {len(results['error'])}", "ERROR")
             
-            log_message("─" * 60)
-            
-            # Print stats every 10 cycles
-            if stats.total_checks % (10 * len(clones)) == 0:
-                print(stats.get_summary())
-                
-                # Database stats if available
-                if db.enabled:
-                    db_stats = db.get_statistics(24)
-                    if db_stats:
-                        log_message(f"\n📊 Last 24h Database Stats:")
-                        log_message(f"   Total events: {db_stats.get('total_events', 0)}")
-                        log_message(f"   Restarts: {db_stats.get('restarts', 0)}")
-                        log_message(f"   Crashes: {db_stats.get('crashes', 0)}")
-                        log_message(f"   Disconnects: {db_stats.get('disconnects', 0)}")
+            log_message("=" * 60)
             
             # Send notification if issues were fixed
             if results['fixed'] or results['failed']:
-                notification = f"📊 <b>Cycle Report</b>\n"
+                notification = f"<b>🔔 Cycle Report</b>\n"
                 notification += f"✅ Healthy: {len(results['healthy'])}\n"
                 
                 if results['fixed']:
@@ -1110,32 +1302,39 @@ def monitor_loop(config):
                     notification += f"❌ Failed: {len(results['failed'])}\n"
                 
                 notification += f"⏱️ Duration: {cycle_duration:.1f}s"
-                
                 send_telegram(notification, config)
             
-            # Reset error counter
+            # Reset error counter on success
             consecutive_errors = 0
             
+            # Print stats every 10 cycles
+            if stats.total_checks % (10 * len(clones)) == 0:
+                print(stats.get_summary())
+            
             # Wait for next cycle
-            log_message(f"\n💤 Waiting {check_interval}s for next cycle...")
+            log_message(f"\n⏳ Waiting {check_interval}s for next cycle...")
             time.sleep(check_interval)
         
         except KeyboardInterrupt:
-            log_message("\n" + "=" * 60)
-            log_message("🛑 Shutdown signal received...")
+            log_message("=" * 60)
+            log_message("⚠️  Shutdown signal received...")
             
-            # Stop cache cleaner
+            # Stop threads
             cache_cleaner.running = False
+            if auto_reboot_thread:
+                auto_reboot_thread.running = False
             
+            # Print final stats
             print(stats.get_summary())
             
+            # Send shutdown notification
             send_telegram(
-                f"🛑 <b>Monitor Stopped</b>\n"
+                f"🛑 <b>Monitor Stopped</b>\n\n"
                 f"📊 Final stats:\n"
-                f"Checks: {stats.total_checks}\n"
-                f"Fixes: {stats.total_fixed}\n"
-                f"Cache cleanings: {stats.cache_cleanings}\n"
-                f"Success: {((stats.total_fixed / max(stats.total_fixed + stats.total_failed, 1)) * 100):.1f}%",
+                f"• Checks: {stats.total_checks:,}\n"
+                f"• Fixes: {stats.total_fixed}\n"
+                f"• Cache cleanings: {stats.cache_cleanings}\n"
+                f"• Success: {((stats.total_fixed / max(stats.total_fixed + stats.total_failed, 1)) * 100):.1f}%",
                 config
             )
             
@@ -1150,6 +1349,7 @@ def monitor_loop(config):
                 import traceback
                 log_message(traceback.format_exc(), "DEBUG")
             
+            # Alert on multiple consecutive errors
             if consecutive_errors >= 5:
                 send_telegram(
                     f"⚠️ <b>Multiple Errors</b>\n"
@@ -1231,6 +1431,10 @@ def main():
     parser.add_argument('--database', action='store_true', help='Enable SQLite database')
     parser.add_argument('--web-ui', action='store_true', help='Enable web dashboard')
     parser.add_argument('--debug', action='store_true', help='Enable debug mode')
+
+    # Test commands
+    parser.add_argument('--test-reboot', action='store_true', help='Test device reboot (single cycle)')
+    parser.add_argument('--force-reboot', action='store_true', help='Force immediate reboot of all devices')
     
     args = parser.parse_args()
     
@@ -1249,6 +1453,39 @@ def main():
     init_logging(config)
     
     log_message("✅ Configuration loaded successfully", "SUCCESS")
+    # TEST MODE: Reboot test
+    if args.test_reboot:
+        log_message("\n🔧 TEST MODE: Device Reboot Test", "WARNING")
+        log_message("=" * 60)
+        
+        instances = config.get_all_enabled_instances()
+        log_message(f"📱 Will test reboot on {len(instances)} instances")
+        
+        input("\n⚠️  Press ENTER to start reboot test (Ctrl+C to cancel)...\n")
+        
+        success, failed = reboot_all_devices(config)
+        
+        log_message("\n" + "=" * 60)
+        log_message("🔧 REBOOT TEST COMPLETED", "SUCCESS")
+        log_message(f"✅ Success: {success}")
+        log_message(f"❌ Failed: {failed}")
+        log_message("=" * 60)
+        
+        return
+    # FORCE REBOOT MODE
+    if args.force_reboot:
+        log_message("\n🔧 FORCE REBOOT MODE", "WARNING")
+        log_message("=" * 60)
+        
+        instances = config.get_all_enabled_instances()
+        log_message(f"📱 Will force reboot {len(instances)} instances")
+        
+        input("\n⚠️  Press ENTER to proceed with FORCE REBOOT (Ctrl+C to cancel)...\n")
+        
+        reboot_all_devices(config)
+        
+        log_message("\n✅ Force reboot completed", "SUCCESS")
+        return
     
     # Show summary
     clones = config.get_all_enabled_clones()
